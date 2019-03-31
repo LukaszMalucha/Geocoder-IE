@@ -2,29 +2,34 @@
 import os
 import env
 from db import db
+from flask_pymongo import PyMongo
 
-from flask import Flask, render_template, session
+from flask import Flask, render_template
 from flask_restful import Api
 from flask_bootstrap import Bootstrap
-
-from resources.user import UserRegister, UserLogin, UserLogout
-
+from resources.user import UserRegister, UserLogin, UserLogout, login_manager
 
 ## App Settings
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
 
+mongo = PyMongo(app)
 app.config['DEBUG'] = True
 api = Api(app)
 
 Bootstrap(app)
+login_manager.init_app(app)
+
 
 
 ## Register Resources
+
 
 
 api.add_resource(UserRegister, '/register')
@@ -32,18 +37,14 @@ api.add_resource(UserLogin, '/login')
 api.add_resource(UserLogout, '/logout')
 
 
-## User Login
-@app.context_processor
-def context_processor():
-    current_user = session.get('current_user') or 'Guest'
-    return dict(current_user=current_user)
-
-
-
 ## Main View
 @app.route('/')
 def dashboard():
-    return render_template("dashboard.html")
+
+    geo = ""
+
+
+    return render_template("dashboard.html", geo = geo)
 
 
 @app.errorhandler(404)
@@ -67,4 +68,4 @@ if __name__ == '__main__':
         def create_tables():
             db.create_all()
 
-    app.run()
+    app.run(debug=True)

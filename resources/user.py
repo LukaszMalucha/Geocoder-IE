@@ -3,6 +3,20 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_restful import Resource
 from models.user import UserModel
 from models.forms import RegisterForm, LoginForm
+from flask_login import LoginManager, login_user, logout_user, AnonymousUserMixin
+
+login_manager = LoginManager()
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return UserModel.find_by_id(int(user_id))
+
+class Anonymous(AnonymousUserMixin):
+  def __init__(self):
+    self.email = 'Guest'
+
+login_manager.anonymous_user = Anonymous
 
 
 class UserRegister(Resource):
@@ -13,16 +27,16 @@ class UserRegister(Resource):
 
     def post(self):
         form = RegisterForm()
-        session['current_user'] = 'Guest'
         if form.validate_on_submit():
-            if UserModel.find_by_email(form.email.data) or UserModel.find_by_username(form.username.data) :
-                return Response(render_template('user/register.html', form=form, message="User already exists"))
+            if UserModel.find_by_email(form.email.data) or UserModel.find_by_username(form.username.data):
+                flash(f'User already exist', 'alert alert-danger')
+                return Response(render_template('user/register.html', form=form))
 
             hashed_password = generate_password_hash(form.password.data,
                                                      method='sha256')  ## password get hashed for security purposes
             new_user = UserModel(email=form.email.data, username=form.username.data, password=hashed_password)
             new_user.save_to_db()
-            session['current_user'] = new_user.email
+            flash(f'You have successfully registered as {new_user.email}', 'alert alert-success')
             return redirect("/")
 
         return Response(render_template('user/register.html', form=form))  ## passing signup form to signup template
@@ -32,7 +46,8 @@ class UserLogin(Resource):
 
     def get(self):
         form = LoginForm()
-        flash(u'Invalid password provided', 'error')
+
+        # alert alert-success
         return Response(render_template('user/login.html', form=form))  ## passing login form to login template
 
     def post(self):
@@ -43,13 +58,17 @@ class UserLogin(Resource):
             if user:
                 if check_password_hash(user.password, form.password.data):
                     session['current_user'] = user.email
+                    flash(f'You have successfully logged in as {user.email}', 'alert alert-success')
+                    login_user(user)
                     return redirect("/")
+            else:
+                flash(u'Invalid Email or Password provided', 'alert alert-danger')
 
-        return Response(render_template('user/login.html', form=form, message="Invalid Email or Password"))
+        return Response(render_template('user/login.html', form=form))
 
 
 class UserLogout(Resource):
 
     def get(self):
-        session['current_user'] = 'Guest'
+        logout_user()
         return redirect("login")

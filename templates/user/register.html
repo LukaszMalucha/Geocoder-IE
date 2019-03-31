@@ -7,26 +7,21 @@
 <link href="{{url_for('static', filename='css/forms.css')}}" rel="stylesheet"/>
 {% endblock %}
 {% block content %}
-{% block row_header %}
-<div class="row" style="min-height: 72px">
-    {% if messages %} {% for message in messages %} {% if message.tags == "success" %}
-    <div class="alert alert-success">
-        <div class="messages text-center">
-            {{ message }}
-        </div>
-    </div>
-    {% else %}
-    <div class="alert alert-danger">
-        <div class="messages text-center">
-            {{ message }}
-        </div>
-    </div>
-    {% endif %} {% endfor %}
-    {% else %}
+<div class="row row-alert" style="min-height: 72px">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
 
-    {% endif %}
-</div>
-{% endblock %}
+            {% for category, message in messages %}
+            <div class="{{ category }}">
+                <div class="messages text-center">
+                    {{ message }}
+                </div>
+            </div>
+            {% endfor %}
+
+            {% endif %}
+            {% endwith %}
+        </div>
 
 <div class="container">
 

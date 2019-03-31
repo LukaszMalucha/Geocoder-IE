@@ -1,5 +1,30 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
 
+
+
+{% block content %}
+
+    <div id="mapid"></div>
+
+
+
+
+
+<script>
+    var mymap = L.map('mapid').setView([53.41, -7.92], 7);
+
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoibWF4aW11c21pbmltdXMiLCJhIjoiY2puOHlwZ2dwMGMzNDNrb2Rsc3dndTB3NyJ9.F6YVg9QT6hfgNGvy0aUypA'
+    }).addTo(mymap);
+
+    var marker = L.marker([{{geo.Y}},{{geo.X}}]).addTo(mymap);
+    marker.bindPopup("<br><b>Long: {{geo.X}}</b><br><b>&nbsp;&nbsp;&nbsp;Lat:&nbsp;&nbsp;{{geo.Y}}</b>").openPopup();
+    marker.bindPopup("<b>{{geo.townland}},&nbsp;co.&nbsp;{{geo.county}}</b><br><b>Longitude: </b>&nbsp;&nbsp;{{geo.X}}<br><b>Latitude:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{geo.Y}}").openPopup();
+</script>
 
 
 

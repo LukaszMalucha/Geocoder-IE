@@ -17,7 +17,10 @@ body {
 
 #page-index {
     width: 100%;
-    margin: 100px  0px 0px 0px;
+    display: block;
+    overflow: auto;
+    position: relative;
+    top: 55px;
 
 }
 
@@ -79,6 +82,11 @@ h2 {
     width: 100%;
     margin: auto;
 }
+
+.row-alert {
+    min-height: 72px;
+}
+
 
 .plain-element {
     margin:0px;
@@ -197,6 +205,19 @@ h5 {
 #button_command>i {
     font-size: 3.3rem;
 }
+
+
+/*----------------------------------------------
+    MAP
+------------------------------------------------*/
+
+#mapid {
+    height: 1000px;
+    width: 100%;
+    z-index: 250;
+}
+
+
 
 /*------------------------------------------------------------------------------
     EDIT & ADD FORMS + TABLE    

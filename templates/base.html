@@ -23,6 +23,9 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="crossorigin=""></script>
     {% block extrahead %}{% endblock %} {% block head_js %} {% endblock head_js %}
 </head>
 
@@ -44,7 +47,7 @@
             <li><a class="nav-link" target="_blank" href="https://github.com/LukaszMalucha/Help-Me-Geocoder/"><i
                     class="fab fa-github"></i> <b> GitHub</b></a></li>
             <li><a class='dropdown-trigger nav-link' href='#' data-target='dropdown1' id="user_dropdown"><i
-                    class="fas fa-caret-down"></i><b> {{ current_user }}</b></a></li>
+                    class="fas fa-caret-down"></i><b> {{ current_user.email }}</b></a></li>
             <li><a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons" id="trigger">menu</i></a>
             </li>
         </ul>
@@ -74,6 +77,9 @@
 
     <div id="page-index">
 
+
+
+
         {% block content %} {% endblock %}
 
     </div>
@@ -93,6 +99,8 @@
 
 <!-- Custom Js -->
 <script src="{{url_for('static', filename='js/custom-scripts.js')}}"></script>
+
+
 
 </body>
 
