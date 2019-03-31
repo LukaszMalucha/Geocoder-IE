@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<!-- PAGE-WRAPPER -->
+<div id="page-wrapper" style="margin: 0px">
+    <!-- PAGE-INDEX -->
+    <div id="page-index">
+        <div class="dashboard-cards">
+            <br>
+            <div class="row text-center">
+
+            </div>
+            <div class="row text-center">
+                <div class="col-md-3 text-center"></div>
+                <div class="col-md-6 text-center">
+                    <div class="card text-center" id="table_card">
+                        <div class="table-responsive" style="overflow-x: hidden;">
+                            <table class="table table-striped table-bordered" id="dataTables-example" style="overflow-x: hidden;">
+                                <thead>
+                                    <tr>
+                                        <th class="center">County</th>
+                                        <th class="center">Address</th>
+                                        <th class="center">Longitude</th>
+                                        <th class="center">Latitude</th>
+                                        <th class="center">Map</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for data in addresses %}
+                                    <tr class="odd gradeA">
+                                        <td class="center">{{data.county}}</td>
+                                        <td class="left" style="border-top: 0px solid #ddd; border-bottom: 0px solid #ddd">{{data.address}}</td>
+                                        <td class="center">{{data.longtitude}}</td>
+                                        <td class="center">{{data.latitude}}</td>
+                                        <td class="center"><a target="_blank" href="https://www.google.ie/maps/search/{{data.latitude}},+{{data.longtitude}}?ved=2ahUKEwiz8vf3oYHfAhVpJMAKHU9oAL0Q8gEwAHoECAAQAQ/"><i class="fas fa-map-marker-alt" id="table_pin"></i></a></td>
+                                    </tr>
+
+                                    {% endfor%}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center"></div>
+                </div>
+                <br>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-2 text-center"></div>
+                <div class="col-md-8 text-center">
+                    <a href="{{url_for('geocoder')}}" class="waves-effect waves-light btn-large">Back to Main Page</a>
+                </div>
+                <div class="col-md-2 text-center"></div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<!-- PAGE-INDEX -->
+
+{% endblock %}

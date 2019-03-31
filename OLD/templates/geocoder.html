@@ -1,0 +1,90 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- SIDE NAVBAR -->
+
+<!-- PAGE-WRAPPER -->
+<div id="page-wrapper">
+    <!-- PAGE-INDEX -->
+    <div id="page-index">
+        <div class="dashboard-cards">
+
+            <br><br>
+
+            <div class="col-md-2 text-left">
+                <div class="card" id="form-card">
+                    <form method="POST" enctype="multipart/form-data" class="col s12">
+                        <div class="row text-center">
+                            <h3>Find Address</h3>
+                        </div>
+                        <div class="row text-center" style="min-height: 35px">
+                            {% if warning %}
+                            <h5 style="color: red">{{ warning }} </h5>
+                            {% endif %}
+                        </div>    
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <select id="county" name="county">
+                                {% for county in counties %}
+                                      <option value={{ county }}>{{ county }}</option>
+                                {% endfor %}
+                                </select>
+                                <label>Select County</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                             <div class="input-field col s12">
+                                <input placeholder="City, Town or Area" id="locality"  name="locality" type="text" class="validate" required>
+                                <label for="first_name">Locality</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="Address 1" id="address_1" name="address_1" type="text" class="validate">
+                                <label for="first_name">Address Line 1:</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="Address 2" id="address_2" name="address_2" type="text" class="validate">
+                                <label for="first_name">Address Line 2:</label>
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <button class="btn waves-effect waves-light" type="submit" name="action" id="button_geocode">Help me Geocoder!</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-1 text-left"></div>
+            <div class="col-md-9 text-left">
+                <div class="row">
+                <div id="mapid"></div>
+            </div>
+            <div class="col-md-1 text-left"></div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+ 
+    var mymap = L.map('mapid').setView([53.41, -7.92], 7);
+
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoibWF4aW11c21pbmltdXMiLCJhIjoiY2puOHlwZ2dwMGMzNDNrb2Rsc3dndTB3NyJ9.F6YVg9QT6hfgNGvy0aUypA'
+    }).addTo(mymap);
+    
+    var marker = L.marker([{{geo.Y}},{{geo.X}}]).addTo(mymap);
+    marker.bindPopup("<br><b>Long: {{geo.X}}</b><br><b>&nbsp;&nbsp;&nbsp;Lat:&nbsp;&nbsp;{{geo.Y}}</b>").openPopup();
+    marker.bindPopup("<b>{{geo.townland}},&nbsp;co.&nbsp;{{geo.county}}</b><br><b>Longitude: </b>&nbsp;&nbsp;{{geo.X}}<br><b>Latitude:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{geo.Y}}").openPopup();
+  </script>
+
+<!-- PAGE-INDEX -->
+
+{% endblock %}
