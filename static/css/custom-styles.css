@@ -107,6 +107,24 @@ h2 {
     DASHBOARD CARDS    
 ------------------------------------------------------------------------------*/
 
+.dashboard-cards {
+    border: none;
+    text-align: center;
+    padding: 1%;
+    margin-top: 2%;
+    margin-bottom:10%;
+    box-shadow: none;
+    width: 100%;
+    min-height: 600px;
+    display: block;
+    overflow: auto;
+    background-image: url('../../static/img/backg.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-attachment: fixed;
+    background-position: center;
+}
+
 .row-title {
     width: 100%;
     background-color: #cfd4d8;
@@ -124,6 +142,13 @@ h2 {
     width: 100%;
     text-align: center;
     padding: 2% 1% 2% 1%;
+}
+
+.row-table {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+
 }
 
 .form-card {
@@ -150,8 +175,8 @@ h2 {
     z-index: 400;
     left: 10px;
     top: 5px;
-    width: 50px;
-    height: 100px;
+    width: 35px;
+    height: 70px;
     background: #73b6e6;
 }
 
@@ -215,7 +240,7 @@ tr {
     color: black;
     height: 36px;
     padding-left: 5px;
-    font-size: 12px
+    font-size: 0.9rem;
 }
 
 textarea.materialize-textarea {
@@ -233,12 +258,24 @@ input[type="number"] {
     text-align: center;
 }
 
-.table-plain {
 
+
+
+.table-card {
+    background-color: white;
+    padding: 20px 120px 20px 120px;
+    border-radius: 10px;
+    max-height: 800px;
+    overflow: auto;
 }
 
 
-.table > tbody > tr > td,
+
+
+/*------------------------------------------------------------------------------
+    TABLES
+------------------------------------------------------------------------------*/
+
 .table-plain tr,
 .table-plain td {
     border: none;
@@ -246,7 +283,120 @@ input[type="number"] {
 }
 
 
+.table-responsive {
+    margin-bottom: 20px;
+    width: 100%;
+}
 
+#dataTables-example-1_wrapper,
+#dataTables-example-2_wrapper,
+#dataTables-example_wrapper {
+    margin: 2px;
+}
+
+
+table.dataTable, table.dataTable thead th {
+    border: 1px solid  gray;
+}
+
+.dataTables_info {
+    color:  #191919 !important;
+    font-size: 1.5rem !important;
+}
+
+.dataTables_filter>label,
+.dataTables_length>label {
+        color:  #191919;
+        font-size: 1.5rem;
+}
+
+.table.dataTable thead th{
+    color: white;
+    font-size: 18px !important;
+}
+
+
+#dataTables-example-1 tbody tr,
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+    color: grey;
+}
+
+
+.table.dataTable tbody tr,
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+    color: #191919;
+    font-weight: bold;
+}
+
+.table-bordered > tbody > tr > td {
+    border: 1px solid  gray;
+    line-height: 1.5;
+}
+
+#dataTables-example-1 > thead {
+    background-color:  grey;
+}
+
+.table.dataTable > thead {
+   background-color:  #165d81;
+}
+
+#dataTables-example-1_previous,
+#dataTables-example-1_next,
+#dataTables-example-2_previous,
+#dataTables-example-2_next,
+#dataTables-example_previous,
+#dataTables-example_next {
+    color: #191919 !important;
+}
+
+#dataTables-example-1_length,
+#dataTables-example-2_length,
+#dataTables-example_length {
+    width: 10%;
+
+}
+
+#dataTables-example-1_length > label,
+#dataTables-example-2_length > label,
+#dataTables-example_length > label {
+    display: ruby;
+}
+
+
+#dataTables-example-1_filter input[type="search"]:not(.browser-default),
+#dataTables-example-1_filter input[type="text"]:not(.browser-default),
+#dataTables-example-2_filter input[type="search"]:not(.browser-default),
+#dataTables-example-2_filter input[type="text"]:not(.browser-default),
+#dataTables-example_filter input[type="search"]:not(.browser-default),
+#dataTables-example_filter input[type="text"]:not(.browser-default) {
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    width: 70%;
+    color:  #191919;
+    height: 2rem;
+
+}
+#dataTables-example-1_length input[type="search"]:not(.browser-default),
+#dataTables-example-1_length input[type="text"]:not(.browser-default),
+#dataTables-example-2_length input[type="search"]:not(.browser-default),
+#dataTables-example-2_length input[type="text"]:not(.browser-default),
+#dataTables-example_length input[type="search"]:not(.browser-default),
+#dataTables-example_length input[type="text"]:not(.browser-default) {
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    color:  #191919;
+}
+
+#dataTables-example-1 td,
+#dataTables-example-2 td {
+    height: 36px;
+    font-size: 11px;
+}
+
+.table_pin {
+    font-size: 1.4rem;
+}
 
 /*------------------------------------------------------------------------------
     FOOTER

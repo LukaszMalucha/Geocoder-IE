@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block extrahead %}
+<script>
+    $(document).ready(function() {
+        $('#dataTables-example').dataTable();
+    });
+</script>
+{% endblock %}
+
+
+{% block content %}
+<div class="dashboard-cards">
+    <br>
+    <div class="row row-table">
+
+        <div class="card table-card">
+            <div class="table-responsive" style="overflow-x: hidden;">
+                <table class="table table-striped table-bordered" id="dataTables-example">
+                    <thead>
+                    <tr>
+                        <th class="center">County</th>
+                        <th class="center">Address</th>
+                        <th class="center">Longitude</th>
+                        <th class="center">Latitude</th>
+                        <th class="center">Map</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for data in addresses %}
+                    <tr class="odd gradeA">
+                        <td class="center">{{data.county}}</td>
+                        <td class="center">
+                            {{data.address}}
+                        </td>
+                        <td class="center">{{data.longitude}}</td>
+                        <td class="center">{{data.latitude}}</td>
+                        <td class="center"><a target="_blank"
+                                              href="https://www.google.ie/maps/search/{{data.latitude}},+{{data.longitude}}?ved=2ahUKEwiz8vf3oYHfAhVpJMAKHU9oAL0Q8gEwAHoECAAQAQ/"><i
+                                class="fas fa-map-marker-alt table_pin"></i></a></td>
+                    </tr>
+
+                    {% endfor%}
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <br>
+    </div>
+</div>
+{% endblock %}

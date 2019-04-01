@@ -64,11 +64,18 @@ def dashboard():
     return render_template("dashboard.html", counties=counties, geo=geo)
 
 
+@app.route('/addresses')
+def addresses():
+    """All the geocoded addresses"""
+
+    address_list = AddressModel.query.limit(10000).all()
+
+    return render_template("addresses.html", addresses=address_list)
+
+
 @app.route('/api')
 def api():
-
     return render_template("api.html")
-
 
 
 @app.errorhandler(404)

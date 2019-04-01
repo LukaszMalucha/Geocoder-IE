@@ -36,7 +36,7 @@ class UserRegister(Resource):
                                                      method='sha256')  ## password get hashed for security purposes
             new_user = UserModel(email=form.email.data, username=form.username.data, password=hashed_password)
             new_user.save_to_db()
-            flash(f'You have successfully registered as {new_user.email}', 'alert alert-success')
+            login_user(new_user)
             return redirect("/")
 
         return Response(render_template('user/register.html', form=form))  ## passing signup form to signup template

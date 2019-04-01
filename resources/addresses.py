@@ -4,11 +4,13 @@ from models.addresses import AddressModel
 
 class Address(Resource):
     def get(self, address):
-        address = AddressModel.find_by_address(address)
-        if address:
-            # return address.json()
-            return {'asd': 'asd'}
-        return {'message': 'Address not found'}, 404
+        address = str.capitalize(address)
+        match_addresses = AddressModel.find_by_address(address)
+        addresses = list(map(lambda x: x.json(), match_addresses))
+        if len(addresses):
+            return {'address': addresses}
+        else:
+            return {'message': 'Address not found'}, 404
 
 
 class CountyAddressesList(Resource):
