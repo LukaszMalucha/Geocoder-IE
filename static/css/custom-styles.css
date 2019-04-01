@@ -89,13 +89,26 @@ h2 {
     padding: 0px;
 }
 
+.warning {
+    color: red;
+}
+
+/*----------------------------------------------
+    MAP
+------------------------------------------------*/
+
+#mapid {
+    height:89vh;
+    z-index: 0;
+}
+
+
 /*------------------------------------------------------------------------------
     DASHBOARD CARDS    
 ------------------------------------------------------------------------------*/
 
 .form-card {
     width: 300px;
-
     z-index: 500;
     position: absolute;
     left: 5px;
@@ -107,26 +120,28 @@ h2 {
     background-image: linear-gradient(to bottom right, #fafafa, white);
 }
 
-
-
-
-
-/*----------------------------------------------
-    MAP
-------------------------------------------------*/
-
-#mapid {
-    height:89vh;
-    width: 100%;
-    z-index: 0;
+.form-card label {
+    color: #787878;
+    font-size: .9rem;
 }
-
 
 
 /*------------------------------------------------------------------------------
     EDIT & ADD FORMS + TABLE    
 ------------------------------------------------------------------------------*/
 
+
+.input-field label{
+    margin-left: 0px;
+
+}
+
+
+input[type="text"]:not(.browser-default) {
+    color: black;
+    height: 2rem;
+    font-size: 0.9rem;
+}
 input[type=text],
 select,
 textarea {
@@ -170,33 +185,14 @@ textarea.materialize-textarea {
     color: black;
 }
 
-input[type="text"]:not(.browser-default) {
-    color: black;
-}
+
 
 input[type="text"],
 input[type="number"] {
     text-align: center;
 }
 
-input[type="number"]:not(.browser-default):focus:not([readonly]),
-input.invalid[type="number"]:not(.browser-default),
-input.invalid[type="number"]:not(.browser-default):focus,
-input.invalid[type="number"]:not(.browser-default) {
-    border-bottom: 1px solid #8B0000;
-    box-shadow: 0 1px 0 0 #8B0000;
-}
 
-
-input[type="number"]:not(.browser-default):focus:not([readonly]) + label {
-    color: #8B0000;
-}
-
-
-input[type="number"]:not(.browser-default) {
-    height: 4rem;
-    cursor:pointer;
-}
 
 
 /*------------------------------------------------------------------------------
