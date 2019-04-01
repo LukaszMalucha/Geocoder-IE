@@ -40,13 +40,13 @@ api.add_resource(UserLogout, '/logout')
 
 ## Main View
 @app.route('/', methods=['GET', 'POST'])
-def geocoder():
+def dashboard():
+
     ## Counties for the form
     counties = list(mongo.db.geocodes.distinct("county"))
     counties = sorted(counties)
+    geo = None
 
-    geo = ""
-    warning = ""
 
     if request.method == 'POST':
         county = request.form['county']
@@ -60,8 +60,7 @@ def geocoder():
 
         if not geo:
             warning = "Geocode not found"
-
-        return render_template("dashboard.html", geo=geo, counties=counties, warning=warning)
+            return render_template("dashboard.html", counties=counties, warning=warning, geo=geo)
 
     return render_template("dashboard.html", counties=counties, geo=geo)
 
