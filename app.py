@@ -7,7 +7,11 @@ from flask_pymongo import PyMongo
 from flask import Flask, render_template, request
 from flask_restful import Api
 from flask_bootstrap import Bootstrap
+
+from models.addresses import AddressModel
 from resources.user import UserRegister, UserLogin, UserLogout, login_manager
+from resources.addresses import Address, CountyAddressesList
+from resources.utils import sql_loader
 
 ## App Settings
 
@@ -27,26 +31,27 @@ Bootstrap(app)
 login_manager.init_app(app)
 
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
 
 ## Register Resources
-
-
 
 api.add_resource(UserRegister, '/register')
 api.add_resource(UserLogin, '/login')
 api.add_resource(UserLogout, '/logout')
-
+api.add_resource(Address, '/address/<string:address>')
+api.add_resource(CountyAddressesList, '/county/<string:county>')
 
 
 ## Main View
 @app.route('/', methods=['GET', 'POST'])
 def dashboard():
-
     ## Counties for the form
     counties = list(mongo.db.geocodes.distinct("county"))
     counties = sorted(counties)
     geo = None
-
 
     if request.method == 'POST':
         county = request.form['county']
@@ -63,6 +68,8 @@ def dashboard():
             return render_template("dashboard.html", counties=counties, warning=warning, geo=geo)
 
     return render_template("dashboard.html", counties=counties, geo=geo)
+
+
 
 @app.errorhandler(404)
 def error404(error):
