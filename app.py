@@ -30,19 +30,13 @@ api = Api(app)
 Bootstrap(app)
 login_manager.init_app(app)
 
-
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
-
 ## Register Resources
 
 api.add_resource(UserRegister, '/register')
 api.add_resource(UserLogin, '/login')
 api.add_resource(UserLogout, '/logout')
-api.add_resource(Address, '/address/<string:address>')
-api.add_resource(CountyAddressesList, '/county/<string:county>')
+api.add_resource(Address, '/api/address/<string:address>')
+api.add_resource(CountyAddressesList, '/api/county/<string:county>')
 
 
 ## Main View
@@ -68,6 +62,12 @@ def dashboard():
             return render_template("dashboard.html", counties=counties, warning=warning, geo=geo)
 
     return render_template("dashboard.html", counties=counties, geo=geo)
+
+
+@app.route('/api')
+def api():
+
+    return render_template("api.html")
 
 
 

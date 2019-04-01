@@ -107,12 +107,31 @@ h2 {
     DASHBOARD CARDS    
 ------------------------------------------------------------------------------*/
 
+.row-title {
+    width: 100%;
+    background-color: #cfd4d8;
+    color: white;
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px #a5a9ac;
+    margin-left: 0px;
+}
+
+.row-cards {
+    width: 100%;
+    text-align: center;
+    padding: 2% 1% 2% 1%;
+}
+
 .form-card {
     width: 300px;
     z-index: 500;
     position: absolute;
-    left: 5px;
-    top: 0px;
+    left: 20px;
+    top: 20px;
     border-width: 3px;
     border-radius: 5px;
     padding: 0px;
@@ -125,6 +144,28 @@ h2 {
     font-size: .9rem;
 }
 
+
+.blue-box {
+    position: absolute;
+    z-index: 400;
+    left: 10px;
+    top: 5px;
+    width: 50px;
+    height: 100px;
+    background: #73b6e6;
+}
+
+.dashboard-card {
+    background: white;
+    height: 200px;
+}
+
+
+.box {
+   display: flex;
+   align-items:center;
+   margin-bottom: 10px;
+}
 
 /*------------------------------------------------------------------------------
     EDIT & ADD FORMS + TABLE    
@@ -190,6 +231,18 @@ textarea.materialize-textarea {
 input[type="text"],
 input[type="number"] {
     text-align: center;
+}
+
+.table-plain {
+
+}
+
+
+.table > tbody > tr > td,
+.table-plain tr,
+.table-plain td {
+    border: none;
+    font-size: 1rem;
 }
 
 
