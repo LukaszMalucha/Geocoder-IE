@@ -4,7 +4,7 @@ import env
 from db import db
 from flask_pymongo import PyMongo
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_restful import Api
 from flask_bootstrap import Bootstrap
 from resources.user import UserRegister, UserLogin, UserLogout, login_manager
@@ -37,15 +37,33 @@ api.add_resource(UserLogin, '/login')
 api.add_resource(UserLogout, '/logout')
 
 
+
 ## Main View
-@app.route('/')
-def dashboard():
+@app.route('/', methods=['GET', 'POST'])
+def geocoder():
+    ## Counties for the form
+    counties = list(mongo.db.geocodes.distinct("county"))
+    counties = sorted(counties)
 
     geo = ""
+    warning = ""
 
+    if request.method == 'POST':
+        county = request.form['county']
+        locality = request.form['locality']
+        locality = locality.capitalize()
+        locality = locality.strip()
 
-    return render_template("dashboard.html", geo = geo)
+        ## Find desired locality
 
+        geo = mongo.db.geocodes.find_one({"$and": [{"county": county}, {"townland": locality}]})
+
+        if not geo:
+            warning = "Geocode not found"
+
+        return render_template("dashboard.html", geo=geo, counties=counties, warning=warning)
+
+    return render_template("dashboard.html", counties=counties, geo=geo)
 
 @app.errorhandler(404)
 def error404(error):
