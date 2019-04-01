@@ -4,7 +4,7 @@
 
 body {
     font-family: 'Source Sans Pro', sans-serif;
-    background-color: #fafbfc;
+    background-color: #73b6e6;
 
 }
 
@@ -33,26 +33,22 @@ body {
     text-align: center;
 }
 
-.btn {
+.btn-submit {
+    width: 100%;
+    height: 50px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-color: transparent;
+    text-align: right;
     color: white;
-    background-color: #822118;
-    border: none;
-    width: 200px;
-    margin: 0;
-    font-weight: bold;
-    font-size: 12px;
+    background-color: #165d81;
+    font-size: 18px;
 }
 
-.btn {
-    line-height: 25px;
+.btn-submit:hover, .btn-submit:active, .btn-submit:focus {
+    background-color: #0f415a;
 }
 
-
-.btn:hover,
-.btn:focus {
-    background-color: #812017;
-    color: white;
-}
 
 
 #text {
@@ -97,114 +93,22 @@ h2 {
     DASHBOARD CARDS    
 ------------------------------------------------------------------------------*/
 
+.form-card {
+    width: 300px;
 
-
-
-
-
-
-#dashboard_card {
-    height: 10%;
-    width: 100%;
-    margin: auto;
-    background-color: #621e12;
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px outset #C4554C;
-}
-
-#dashboard_card h2 {
-    color: white;
-    font-weight: bold;
-    font-size: 24px;
-}
-
-#dashboard_card h5 {
-    color: white;
-    font-size: 14px;
-}
-
-#dashboard_card>.row {
-    margin: 10px;
-}
-
-
-#tile-column {
-    padding: 0px;
-    width: 62px;
-}
-
-.mars-tile {
-    margin: 1px;
-    height: 60px;
-    width: 60px;
-}
-
-#map-card {
-    width: 520px;
-    height: 520px;
-    margin: auto;
-    padding: 10px;
-    background-color: #621e12;
-    border: 1px outset #C4554C;
-}
-
-#grid-card {
-    width: 470px;
-    height: 470px;
-    padding: 0px;
-    background-image: url('../../static/img/grid2.png');
-    background-size: cover;
-    border: 1px outset #C4554C;
-    margin: auto;
-}
-
-
-#form-card {
-    width: 90%
-    margin: auto;
-    vertical-align: middle;
+    z-index: 500;
+    position: absolute;
+    left: 5px;
+    top: 0px;
     border-width: 3px;
-    border-radius: 10px;
-    padding: 10px;
-    height: 480px;
-    background-color: #f3f3f3;
+    border-radius: 5px;
+    padding: 0px;
+    box-shadow: none;
+    background-image: linear-gradient(to bottom right, #fafafa, white);
 }
 
 
-#form-card h2,
-h5 {
-    font-weight: bold;
-}
 
-
-.command-card {
-    vertical-align: middle;
-    border-width: 3px;
-    border-radius: 10px;
-    padding: 10px;
-    height: 120px;
-    background-color: #621e12;
-    border: 1px outset #C4554C;
-    width: 70%;
-    margin: auto;
-}
-
-.command-card h2 {
-    font-weight: bold;
-    color: white;
-}
-
-
-#button_command {
-    background-color: #c25b28;
-    width: 160px;
-    height: 40px;
-}
-
-#button_command>i {
-    font-size: 3.3rem;
-}
 
 
 /*----------------------------------------------
@@ -212,9 +116,9 @@ h5 {
 ------------------------------------------------*/
 
 #mapid {
-    height: 1000px;
+    height:89vh;
     width: 100%;
-    z-index: 250;
+    z-index: 0;
 }
 
 
@@ -294,13 +198,32 @@ input[type="number"]:not(.browser-default) {
     cursor:pointer;
 }
 
+
+/*------------------------------------------------------------------------------
+    FOOTER
+------------------------------------------------------------------------------*/
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #181818;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 15px;
+    color: #fff;
+    padding: 15px 0px;
+    text-align: center;
+}
+
+
 /*------------------------------------------------------------------------------
     MEDIA QUERIES     
 ------------------------------------------------------------------------------*/
 
-/* MIN WIDTHS ----------------------------------------------------------------*/
-
-@media(min-width:1811px) {}
 
 
 

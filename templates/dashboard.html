@@ -1,13 +1,49 @@
 {% extends 'base.html' %}
 
 
-
 {% block content %}
+<div class="card form-card">
+    <form method="POST" enctype="multipart/form-data" class="col s12">
+        <div class="row text-center" style="min-height: 35px">
+            {% if warning %}
+            <h5 style="color: red">{{ warning }} </h5>
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="county" name="county">
+                    {% for county in counties %}
+                    <option value={{ county }}>{{ county }}</option>
+                    {% endfor %}
+                </select>
+                <label>Select County</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="City, Town or Area" id="locality" name="locality" type="text" class="validate"
+                       required>
+                <label for="first_name">Locality</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="Address 1" id="address_1" name="address_1" type="text" class="validate">
+                <label for="first_name">Address Line 1:</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="Address 2" id="address_2" name="address_2" type="text" class="validate">
+                <label for="first_name">Address Line 2:</label>
+            </div>
+        </div>
+            <button  class="btn-submit" type="submit" name="action" id="button_geocode"><span>Locate <i class="far fa-arrow-alt-circle-right"></i></span>
+            </button>
+    </form>
+</div>
 
-    <div id="mapid"></div>
-
-
-
+<div id="mapid"></div>
 
 
 <script>
@@ -24,9 +60,8 @@
     var marker = L.marker([{{geo.Y}},{{geo.X}}]).addTo(mymap);
     marker.bindPopup("<br><b>Long: {{geo.X}}</b><br><b>&nbsp;&nbsp;&nbsp;Lat:&nbsp;&nbsp;{{geo.Y}}</b>").openPopup();
     marker.bindPopup("<b>{{geo.townland}},&nbsp;co.&nbsp;{{geo.county}}</b><br><b>Longitude: </b>&nbsp;&nbsp;{{geo.X}}<br><b>Latitude:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{geo.Y}}").openPopup();
+
 </script>
-
-
 
 
 {% endblock %}
