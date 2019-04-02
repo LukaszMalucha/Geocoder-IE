@@ -1,9 +1,14 @@
-# HELP ME, GEOCODER!
-
-## *****REWORK
+# Geocoder IE
 
 
-[Visit the App](https://ireland-geocoder.herokuapp.com/)
+
+####[Visit the App](https://ireland-geocoder.herokuapp.com/)
+
+<br>
+
+![1](https://user-images.githubusercontent.com/26208598/55428834-e4d7c980-5581-11e9-991a-da9bf0a1a9f5.JPG)
+
+<br>
 
 
 ## ASSIGNMENT
@@ -140,9 +145,23 @@ App consits of two views and two databases.
 
 <br>
 
-##### Geocoder
 
-![geo](https://user-images.githubusercontent.com/26208598/49396129-4c931a80-f730-11e8-8565-e8e179a26e2a.PNG)
+##### Manage User
+
+<br>
+
+![3](https://user-images.githubusercontent.com/26208598/55428837-e6a18d00-5581-11e9-97cd-562f81ce408a.JPG)
+
+<br>
+
+
+
+##### Geocoder
+<br>
+
+![1](https://user-images.githubusercontent.com/26208598/55428834-e4d7c980-5581-11e9-991a-da9bf0a1a9f5.JPG)
+
+<br>
 
 Main page of an application. Allows user to query address against geocode database. 
 One can think about as an budget approach to our assignment, as it allows to retrive geocode for given address. But it's an really visually appealing, bonus addon.
@@ -150,11 +169,22 @@ One can think about as an budget approach to our assignment, as it allows to ret
 <br>
 
 ##### Addresses
+<br>
 
-![datatable](https://user-images.githubusercontent.com/26208598/49391758-77777180-f724-11e8-87cc-790129ce0488.PNG)
+![2](https://user-images.githubusercontent.com/26208598/55428835-e5706000-5581-11e9-916c-2f0e3766d045.JPG)
+
+<br>
 
 Table of addresses from Customer assignment. Easily searchable, expandable and responsive. Pin icon can easily take us to Google Maps to verify geocode accuracy.
 
+
+##### REST API Endpoints
+
+<br>
+
+![4](https://user-images.githubusercontent.com/26208598/55428844-eef9c800-5581-11e9-955c-5f6ddf251292.JPG)
+
+<br>
 
 #### Databases
 
@@ -176,16 +206,14 @@ There are various elements from Materialize & FontAwesome.<br>
 
 Web App is Bootstrapped and fully responsive. 
 
-<br>
-
-![7](https://user-images.githubusercontent.com/26208598/49391745-6f1f3680-f724-11e8-9f3f-d35c4a21532e.PNG)
-
-<br>
 
 ## TOOLS, MODULES & TECHNIQUES:
 
+##### Travis CI
+[![Build Status](https://travis-ci.com/LukaszMalucha/Help-Me-Geocoder.svg?branch=master)](https://travis-ci.com/LukaszMalucha/Help-Me-Geocoder)
+
 ##### Python – web development:
-Flask | CSS | Bootstrap | Materialize | Leaflet | DataTables | Heroku
+Flask | CSS | Bootstrap | Materialize | Leaflet | DataTables | Heroku | Docker
 ##### Database:
 Sqlite3 | Mongo DB 
 ##### Data Preprocessing:
