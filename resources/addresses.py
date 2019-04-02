@@ -15,4 +15,4 @@ class Address(Resource):
 
 class CountyAddressesList(Resource):
     def get(self, county):
-        return {'county_addresses': list(map(lambda x: x.json(), AddressModel.query.all()))}
+        return {'county_addresses': list(map(lambda x: x.json(), AddressModel.find_by_county(county)))}

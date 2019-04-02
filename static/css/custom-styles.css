@@ -151,6 +151,10 @@ h2 {
 
 }
 
+.row-warning {
+    height: 20px;
+}
+
 .form-card {
     width: 300px;
     z-index: 500;

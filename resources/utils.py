@@ -13,7 +13,6 @@ def mongo_loader():
     mongo_uri = os.environ.get("MONGO_URI")
     mongo_db = os.environ.get("MONGO_DBNAME")
 
-
     client = MongoClient(mongo_uri)
     db = client[mongo_db]
     geocodes = db["geocodes"]
@@ -32,9 +31,13 @@ def mongo_loader():
         geocodes.insert_one(row)
 
 
-
 def sql_loader(addresses):
     for element in addresses:
         new_address = AddressModel(county=element['county'], address=element['townland'], longitude=element['X'],
                                    latitude=element['Y'])
         new_address.save_to_db()
+
+
+county_list = ['Carlow', 'Cavan', 'Clare', 'Cork', 'Donegal', 'Dublin', 'Galway', 'Kerry', 'Kildare','Kilkenny', 'Laois',
+            'Leitrim', 'Limerick', 'Longford', 'Louth', 'Mayo', 'Meath','Monaghan', 'Offaly','Roscommon', 'Sligo',
+            'Tipperary', 'Waterford', 'Westmeath', 'Wexford', 'Wicklow']

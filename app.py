@@ -4,14 +4,14 @@ import env
 from db import db
 from flask_pymongo import PyMongo
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_restful import Api
 from flask_bootstrap import Bootstrap
 
 from models.addresses import AddressModel
 from resources.user import UserRegister, UserLogin, UserLogout, login_manager
 from resources.addresses import Address, CountyAddressesList
-from resources.utils import sql_loader
+from resources.utils import county_list
 
 ## App Settings
 
@@ -43,8 +43,7 @@ api.add_resource(CountyAddressesList, '/api/county/<string:county>')
 @app.route('/', methods=['GET', 'POST'])
 def dashboard():
     ## Counties for the form
-    counties = list(mongo.db.geocodes.distinct("county"))
-    counties = sorted(counties)
+    counties = county_list
     geo = None
 
     if request.method == 'POST':
@@ -64,13 +63,31 @@ def dashboard():
     return render_template("dashboard.html", counties=counties, geo=geo)
 
 
-@app.route('/addresses')
+@app.route('/addresses', methods=['GET', 'POST'])
 def addresses():
     """All the geocoded addresses"""
+    counties = county_list
+    address_list = ''
 
-    address_list = AddressModel.query.limit(10000).all()
+    if request.method == "POST":
 
-    return render_template("addresses.html", addresses=address_list)
+        county = request.form['county']
+
+        address_list = list(AddressModel.find_by_county(county))[:5]
+
+        return jsonify({'county': county})
+
+
+
+
+    # address_list = AddressModel.query.limit(10000).all()
+
+    return render_template("addresses.html", addresses=address_list, counties=counties)
+
+
+
+
+
 
 
 @app.route('/api')

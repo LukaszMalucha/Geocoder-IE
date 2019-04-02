@@ -10,7 +10,7 @@
                 {% if warning %}
                 <h6 class="warning">{{ warning }} asd</h6>
                 {% else %}
-                <h6>Find Address in Ireland</h6>
+                <h6>Find Locality in Ireland</h6>
                 {% endif %}
             </div>
             <div class="row plain-element">
@@ -43,7 +43,8 @@
                 </div>
             </div>
         </fieldset>
-        <button class="btn-submit" type="submit" name="action" id="button_geocode"><span>Locate <i class="fas fa-map-marker-alt"></i></span>
+        <button class="btn-submit" type="submit" name="action" id="button_geocode"><span>Locate <i
+                class="fas fa-map-marker-alt"></i></span>
         </button>
 
     </form>
@@ -66,6 +67,7 @@
     var marker = L.marker([{{geo.Y}},{{geo.X}}]).addTo(mymap);
     marker.bindPopup("<br><b>Long: {{geo.X}}</b><br><b>&nbsp;&nbsp;&nbsp;Lat:&nbsp;&nbsp;{{geo.Y}}</b>").openPopup();
     marker.bindPopup("<b>{{geo.townland}},&nbsp;co.&nbsp;{{geo.county}}</b><br><b>Longitude: </b>&nbsp;&nbsp;{{geo.X}}<br><b>Latitude:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{geo.Y}}").openPopup();
+
 
 
 
