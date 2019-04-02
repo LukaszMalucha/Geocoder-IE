@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block extrahead %}
-<script src="{{url_for('static', filename='js/form.js')}}"></script>
 
 <script>
     $(document).ready(function() {
         $('#dataTables-example').dataTable();
     });
+
 </script>
 {% endblock %}
 
@@ -14,50 +14,37 @@
 {% block content %}
 <div class="dashboard-cards">
     <div class="card form-card">
-        <p id="county_choice"> </p>
-    <form method="POST" class="col s12">
-        <fieldset class="form-box">
-            <div class="row text-center row-warning">
-                {% if warning %}
-                <h6 class="warning">{{ warning }} asd</h6>
-                {% else %}
-                <h6>Find Locality in Ireland</h6>
-                {% endif %}
-            </div>
-            <div class="row plain-element">
-                <div class="input-field col s12">
-                    <select id="county" name="county">
-                        {% for county in counties %}
-                        <option value={{ county }}>{{ county }}</option>
-                        {% endfor %}
-                    </select>
-                    <label>Select County</label>
+        <form method="POST" class="col s12">
+            <fieldset class="form-box">
+                <div class="row text-center row-warning">
+                    {% if warning %}
+                    <h6 class="warning">{{ warning }} asd</h6>
+                    {% else %}
+                    <h6>Choose County in Ireland</h6>
+                    {% endif %}
                 </div>
-            </div>
-        </fieldset>
-        <button class="btn-submit" type="submit" name="action" id="button_geocode"><span>Continue <i
-                class="fas fa-map-marker-alt"></i></span>
-        </button>
-
-    </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
+                <br>
+                <div class="row plain-element">
+                    <div class="input-field col s12">
+                        <select id="county" name="county">
+                            <option value=" " selected>County</option>
+                            {% for county in counties %}
+                            <option value={{ county }}>{{ county }}</option>
+                            {% endfor %}
+                        </select>
+                        <label>Select County</label>
+                    </div>
+                </div>
+            </fieldset>
+            <button class="btn-submit" type="submit" name="action" id="button_geocode"><span>Continue <i
+                    class="fas fa-map-marker-alt"></i></span>
+            </button>
+        </form>
+    </div>
     <br>
     <div class="row row-table">
 
-        <div class="card table-card hidden">
+        <div class="card table-card">
             <div class="table-responsive" style="overflow-x: hidden;">
                 <table class="table table-striped table-bordered" id="dataTables-example">
                     <thead>

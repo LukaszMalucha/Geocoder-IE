@@ -1,10 +1,11 @@
 ## App Utilities
 import os
 import env
+import geocoder
 from db import db
 from flask_pymongo import PyMongo
 
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 from flask_restful import Api
 from flask_bootstrap import Bootstrap
 
@@ -44,7 +45,8 @@ api.add_resource(CountyAddressesList, '/api/county/<string:county>')
 def dashboard():
     ## Counties for the form
     counties = county_list
-    geo = None
+    g = geocoder.ip('me')
+    geo = {'X': g.latlng[1], 'Y': g.latlng[0], 'townland': g.city, 'county': g.state }
 
     if request.method == 'POST':
         county = request.form['county']
@@ -67,27 +69,12 @@ def dashboard():
 def addresses():
     """All the geocoded addresses"""
     counties = county_list
-    address_list = ''
-
+    county = ""
     if request.method == "POST":
+        county = str(request.form['county'])
 
-        county = request.form['county']
-
-        address_list = list(AddressModel.find_by_county(county))[:5]
-
-        return jsonify({'county': county})
-
-
-
-
-    # address_list = AddressModel.query.limit(10000).all()
-
+    address_list = AddressModel.find_by_county(county)
     return render_template("addresses.html", addresses=address_list, counties=counties)
-
-
-
-
-
 
 
 @app.route('/api')
@@ -117,3 +104,8 @@ if __name__ == '__main__':
             db.create_all()
 
     app.run(debug=True)
+
+
+## Heroku
+    # port = int(os.environ.get('PORT', 5000))
+    # app.run(host='0.0.0.0', port=port)
