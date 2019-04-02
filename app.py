@@ -46,7 +46,7 @@ def dashboard():
     ## Counties for the form
     counties = county_list
     g = geocoder.ip('me')
-    geo = {'X': g.latlng[1], 'Y': g.latlng[0], 'Locality': f'{g.city}, co. {g.state}'}
+    geo = {'X': g.latlng[1], 'Y': g.latlng[0], 'Locality': 'Your Location'}
 
     if request.method == 'POST':
         county = request.form['county']
