@@ -1,6 +1,6 @@
 ## App Utilities
 import os
-# import env
+import env
 import geocoder
 from db import db
 from flask_pymongo import PyMongo
@@ -104,7 +104,7 @@ if __name__ == '__main__':
         def create_tables():
             db.create_all()
 
-    app.run(debug=True)
+    app.run(host='0.0.0.0') 
 
 ## Heroku
     # port = int(os.environ.get('PORT', 5000))

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block extrahead %}
+
+<script>
+    $(document).ready(function() {
+        $('#dataTables-example').dataTable();
+    });
+
+</script>
+{% endblock %}
+
+
+{% block content %}
+<div class="dashboard-cards">
+    <div class="card form-card county-card">
+        <form method="POST" class="col s12">
+            <fieldset class="form-box">
+                <div class="row text-center row-warning">
+                    {% if warning %}
+                    <h6 class="warning">{{ warning }} asd</h6>
+                    {% else %}
+                    <h6>Choose County in Ireland</h6>
+                    {% endif %}
+                </div>
+                <br>
+                <div class="row plain-element">
+                    <div class="input-field col s12">
+                        <select id="county" name="county">
+                            <option value=" " selected>County</option>
+                            {% for county in counties %}
+                            <option value={{ county }}>{{ county }}</option>
+                            {% endfor %}
+                        </select>
+                        <label>Select County</label>
+                    </div>
+                </div>
+            </fieldset>
+            <button class="btn-submit" type="submit" name="action" id="button_geocode"><span>Continue <i
+                    class="fas fa-map-marker-alt"></i></span>
+            </button>
+        </form>
+    </div>
+    <br>
+    <div class="row row-table">
+
+        <div class="card table-card">
+            <div class="table-responsive" style="overflow-x: hidden;">
+                <table class="table table-striped table-bordered" id="dataTables-example">
+                    <thead>
+                    <tr>
+                        <th class="center">County</th>
+                        <th class="center">Address</th>
+                        <th class="center">Longitude</th>
+                        <th class="center">Latitude</th>
+                        <th class="center">Map</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for data in addresses %}
+                    <tr class="odd gradeA">
+                        <td class="center">{{data.county}}</td>
+                        <td class="center">
+                            {{data.address}}
+                        </td>
+                        <td class="center">{{data.longitude|round(6, 'floor')}}</td>
+                        <td class="center">{{data.latitude|round(6, 'floor') }}</td>
+                        <td class="center"><a target="_blank"
+                                              href="https://www.google.ie/maps/search/{{data.latitude}},+{{data.longitude}}?ved=2ahUKEwiz8vf3oYHfAhVpJMAKHU9oAL0Q8gEwAHoECAAQAQ/"><i
+                                class="fas fa-map-marker-alt table_pin"></i></a></td>
+                    </tr>
+
+                    {% endfor%}
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <br>
+    </div>
+</div>
+
+
+{% endblock %}
