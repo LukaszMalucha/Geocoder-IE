@@ -1,6 +1,6 @@
 ## App Utilities
 import os
-# import env
+import env
 import geocoder
 from db import db
 from flask_pymongo import PyMongo
@@ -46,7 +46,7 @@ def dashboard():
     ## Counties for the form
     counties = county_list
     g = geocoder.ip('me')
-    geo = {'X': g.latlng[1], 'Y': g.latlng[0], 'townland': g.city, 'county': g.state }
+    geo = {'X': g.latlng[1], 'Y': g.latlng[0], 'Locality': f'{g.city}, co. {g.state}'}
 
     if request.method == 'POST':
         county = request.form['county']
@@ -57,6 +57,7 @@ def dashboard():
         ## Find desired locality
 
         geo = mongo.db.geocodes.find_one({"$and": [{"county": county}, {"townland": locality}]})
+        geo = {'X': geo['X'], 'Y': geo['Y'], 'Locality': f"{geo['townland']}, co. {geo['county']}"}
 
         if not geo:
             warning = "Geocode not found"
@@ -103,9 +104,8 @@ if __name__ == '__main__':
         def create_tables():
             db.create_all()
 
-    # app.run(debug=True)
-
+    app.run(debug=True)
 
 ## Heroku
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+# port = int(os.environ.get('PORT', 5000))
+# app.run(host='0.0.0.0', port=port)

@@ -66,7 +66,7 @@
 
     var marker = L.marker([{{geo.Y}},{{geo.X}}]).addTo(mymap);
     marker.bindPopup("<br><b>Long: {{geo.X}}</b><br><b>&nbsp;&nbsp;&nbsp;Lat:&nbsp;&nbsp;{{geo.Y}}</b>").openPopup();
-    marker.bindPopup("<b>{{geo.townland}},&nbsp;&nbsp;{{geo.county}}</b><br><b>Longitude: </b>&nbsp;&nbsp;{{geo.X}}<br><b>Latitude:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{geo.Y}}").openPopup();
+    marker.bindPopup("<b>{{geo.Locality}}</b><br><b>Longitude: </b>&nbsp;&nbsp;{{geo.X}}<br><b>Latitude:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{geo.Y}}").openPopup();
 
 
 
