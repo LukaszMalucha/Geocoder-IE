@@ -13,7 +13,7 @@
 
 {% block content %}
 <div class="dashboard-cards">
-    <div class="card form-card">
+    <div class="card form-card county-card">
         <form method="POST" class="col s12">
             <fieldset class="form-box">
                 <div class="row text-center row-warning">
@@ -64,8 +64,8 @@
                         <td class="center">
                             {{data.address}}
                         </td>
-                        <td class="center">{{data.longitude}}</td>
-                        <td class="center">{{data.latitude}}</td>
+                        <td class="center">{{data.longitude|round(6, 'floor')}}</td>
+                        <td class="center">{{data.latitude|round(6, 'floor') }}</td>
                         <td class="center"><a target="_blank"
                                               href="https://www.google.ie/maps/search/{{data.latitude}},+{{data.longitude}}?ved=2ahUKEwiz8vf3oYHfAhVpJMAKHU9oAL0Q8gEwAHoECAAQAQ/"><i
                                 class="fas fa-map-marker-alt table_pin"></i></a></td>

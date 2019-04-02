@@ -247,10 +247,10 @@ nav ul a {
 ------------------------------------------------------------------------------*/
 
 
-@media(max-width:1440px) {
+@media(max-width:1600px) {
     .top-navbar {
-        padding-left: 5%;
-        padding-right: 5%;
+        padding-left: 2%;
+        padding-right: 1%;
     }
 
     .navbar-header {
