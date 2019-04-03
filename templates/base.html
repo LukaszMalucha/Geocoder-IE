@@ -84,9 +84,8 @@
 
     <!-- MOBILE -->
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="{{ url_for('api') }}"><i class="fas fa-terminal"></i> Addresses API</a></li>
-        <li><a target="_blank" href=""><i
-                class="fab fa-linkedin"></i> LinkedIn</a></li>
+        <li><a href="{{ url_for('api') }}"><i class="fas fa-terminal"></i> REST API</a></li>
+        <li><a href="{{ url_for('addresses') }}"><i class="fas fa-terminal"></i> Addresses</a></li>
         <li><a target="_blank" href="https://github.com/LukaszMalucha/Help-Me-Geocoder/"><i
                 class="fab fa-github"></i> GitHub</a></li>
         {% if current_user.email != "Guest" %}
