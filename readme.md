@@ -2,7 +2,7 @@
 
 
 
-#### [Visit the App](https://ireland-geocoder1.herokuapp.com/)
+#### [Visit the App](https://ireland-geocoder.herokuapp.com/)
 
 <br>
 
