@@ -1,6 +1,8 @@
 ## App Utilities
 import os
-# import env
+import env
+from babel import numbers, dates
+from flask_babel import Babel, format_date, gettext
 import geocoder
 from db import db
 from flask_pymongo import PyMongo
@@ -23,9 +25,11 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 
 mongo = PyMongo(app)
-app.config['DEBUG'] = False
+babel = Babel(app)
+app.config['DEBUG'] = True
 api = Api(app)
 
 Bootstrap(app)
@@ -38,6 +42,11 @@ api.add_resource(UserLogin, '/login')
 api.add_resource(UserLogout, '/logout')
 api.add_resource(Address, '/api/address/<string:address>')
 api.add_resource(CountyAddressesList, '/api/county/<string:county>')
+
+## For Testing
+@babel.localeselector
+def get_local():
+    return 'pl'
 
 
 ## Main View
@@ -104,8 +113,8 @@ if __name__ == '__main__':
         def create_tables():
             db.create_all()
 
-    # app.run(debug=True)
+    app.run()
 
 ## Heroku
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    # port = int(os.environ.get('PORT', 5000))
+    # app.run(host='0.0.0.0', port=port)

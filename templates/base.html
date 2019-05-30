@@ -53,13 +53,13 @@
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
             <a class="navbar-brand waves-effect waves-dark" href="{{ url_for('dashboard') }}"><i
-                    class="fas fa-map-marker-alt"></i><strong> Geocoder IE</strong></a>
+                    class="fas fa-map-marker-alt"></i><strong> {{ _('Geocoder') }} IE</strong></a>
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li><a class="nav-link" href="{{ url_for('api') }}"><i class="fas fa-terminal"></i><b> REST API</b></a>
             </li>
             <li><a class="nav-link" href="{{ url_for('addresses') }}"><i class="fas fa-clipboard-list"></i><b>
-                Addresses</b></a></li>
+                {{ _('Addresses') }} </b></a></li>
             <li><a class="nav-link" target="_blank" href="https://github.com/LukaszMalucha/Help-Me-Geocoder/"><i
                     class="fab fa-github"></i> <b> GitHub</b></a></li>
             <li><a class='dropdown-trigger nav-link' href='#' data-target='dropdown1' id="user_dropdown"><i
@@ -72,12 +72,12 @@
     <!-- DROPDOWN -->
     <ul id="dropdown1" class="dropdown-content">
         {% if current_user.email != "Guest" %}
-        <li><a href="{{ url_for('userlogout') }}" id="dropdown_link"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+        <li><a href="{{ url_for('userlogout') }}" id="dropdown_link"><i class="fas fa-sign-out-alt"></i> {{ _('Log Out') }}</a>
         </li>
         {% else %}
-        <li><a href="{{ url_for('userlogin') }}" id="dropdown_link"><i class="fa fa-user fa-fw"></i> Log In</a>
+        <li><a href="{{ url_for('userlogin') }}" id="dropdown_link"><i class="fa fa-user fa-fw"></i> {{ _('Log In') }}</a>
         </li>
-        <li><a href="{{ url_for('userregister') }}" id="dropdown_link"><i class="fas fa-tasks"></i> Register</a>
+        <li><a href="{{ url_for('userregister') }}" id="dropdown_link"><i class="fas fa-tasks"></i> {{ _('Register') }}</a>
         </li>
         {% endif %}
     </ul>
@@ -85,16 +85,16 @@
     <!-- MOBILE -->
     <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ url_for('api') }}"><i class="fas fa-terminal"></i> REST API</a></li>
-        <li><a href="{{ url_for('addresses') }}"><i class="fas fa-terminal"></i> Addresses</a></li>
+        <li><a href="{{ url_for('addresses') }}"><i class="fas fa-terminal"></i> {{ _('Addresses') }}</a></li>
         <li><a target="_blank" href="https://github.com/LukaszMalucha/Help-Me-Geocoder/"><i
                 class="fab fa-github"></i> GitHub</a></li>
         {% if current_user.email != "Guest" %}
-        <li><a href="{{ url_for('userlogout') }}" id="dropdown_link"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+        <li><a href="{{ url_for('userlogout') }}" id="dropdown_link"><i class="fas fa-sign-out-alt"></i> {{ _('Log Out') }}</a>
         </li>
         {% else %}
-        <li><a href="{{ url_for('userlogin') }}" id="dropdown_link"><i class="fa fa-user fa-fw"></i> Log In</a>
+        <li><a href="{{ url_for('userlogin') }}" id="dropdown_link"><i class="fa fa-user fa-fw"></i> {{ _('Log In') }}</a>
         </li>
-        <li><a href="{{ url_for('userregister') }}" id="dropdown_link"><i class="fas fa-tasks"></i> Register</a>
+        <li><a href="{{ url_for('userregister') }}" id="dropdown_link"><i class="fas fa-tasks"></i> {{ _('Register') }}</a>
         </li>
         {% endif %}
     </ul>
@@ -112,7 +112,7 @@
 </div>
 
 <div class="footer">
-    <p> Powered by Septellar &trade;</p>
+    <p> {{ _('Powered by') }}  Septellar &trade;</p>
 </div>
 
 
