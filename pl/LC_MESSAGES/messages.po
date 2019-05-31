@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-05-31 09:59+0100\n"
-"PO-Revision-Date: 2019-05-31 10:04+0100\n"
+"PO-Revision-Date: 2019-05-31 09:59+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pl\n"
 "Language-Team: pl <LL@li.org>\n"
@@ -21,150 +21,150 @@ msgstr ""
 
 #: app.py:56
 msgid "county"
-msgstr "hrabstwo"
+msgstr ""
 
 #: app.py:57
 msgid "Location"
-msgstr "Miejscowość"
+msgstr ""
 
 #: app.py:76
 msgid "Geocode not found"
-msgstr "Geolokalizacja nie odnaleziona"
+msgstr ""
 
 #: templates/404.html:7
 msgid "404 Error - Page Not Found"
-msgstr "Błąd 404 - nie znaleziono strony"
+msgstr ""
 
 #: templates/404.html:33
 msgid "Oops!"
-msgstr "Ups!"
+msgstr ""
 
 #: templates/404.html:33
 msgid "The Page you requested was not found"
-msgstr "Nie znaleziono strony"
+msgstr ""
 
 #: templates/404.html:37
 msgid "HTTP 404 Error - The page you are were looking for appears"
-msgstr "Błąd 404 - Strona, której szukałeś"
+msgstr ""
 
 #: templates/404.html:37
 msgid "to have been moved, deleted or does not exist"
-msgstr "została przeniesiona, usunięta lub nie istnieje"
+msgstr ""
 
 #: templates/404.html:39
 msgid "You can try"
-msgstr "Możesz spróbować"
+msgstr ""
 
 #: templates/404.html:41
 msgid "Visit the"
-msgstr "Wejść na"
+msgstr ""
 
 #: templates/404.html:41
 msgid "Homepage"
-msgstr "Stronę Główną"
+msgstr ""
 
 #: templates/404.html:43
 msgid "Make sure that the address is spelled correctly"
-msgstr "Upewnij się, że adres jest poprawnie wpisany"
+msgstr ""
 
 #: templates/404.html:44
 msgid "Go to"
-msgstr "Wróć"
+msgstr ""
 
 #: templates/404.html:44
 msgid "previous"
-msgstr "na poprzednią"
+msgstr ""
 
 #: templates/404.html:44
 msgid "page"
-msgstr "stronę"
+msgstr ""
 
 #: templates/addresses.html:23
 msgid "Choose County in Ireland"
-msgstr "Wybierz hrabstwo w Irlandii"
+msgstr ""
 
 #: templates/addresses.html:30 templates/addresses.html:52
 msgid "County"
-msgstr "Hrabstwo"
+msgstr ""
 
 #: templates/addresses.html:35 templates/dashboard.html:23
 msgid "Select County"
-msgstr "Wybierz Hrabstwo"
+msgstr ""
 
 #: templates/addresses.html:39
 msgid "Continue"
-msgstr "Kontynuuj"
+msgstr ""
 
 #: templates/addresses.html:53
 msgid "Address"
-msgstr "Adres"
+msgstr ""
 
 #: templates/addresses.html:54 templates/dashboard.html:69
 msgid "Longitude"
-msgstr "Długość"
+msgstr ""
 
 #: templates/addresses.html:55 templates/dashboard.html:69
 msgid "Latitude"
-msgstr "Szerokość"
+msgstr ""
 
 #: templates/addresses.html:56
 msgid "Map"
-msgstr "Mapa"
+msgstr ""
 
 #: templates/api.html:14
 msgid "Find Address"
-msgstr "Znajdź Adres"
+msgstr ""
 
 #: templates/api.html:19
 msgid "County Addresses"
-msgstr "Adresy Hrabstwa"
+msgstr ""
 
 #: templates/base.html:56
 msgid "Geocoder"
-msgstr "Geolokator"
+msgstr ""
 
 #: templates/base.html:62 templates/base.html:89
 msgid "Addresses"
-msgstr "Adresy"
+msgstr ""
 
 #: templates/base.html:66
 msgid "Guest"
-msgstr "Gość"
+msgstr ""
 
 #: templates/base.html:76 templates/base.html:93
 msgid "Log Out"
-msgstr "Wyloguj się"
+msgstr ""
 
 #: templates/base.html:79 templates/base.html:96
 msgid "Log In"
-msgstr "Zaloguj się"
+msgstr ""
 
 #: templates/base.html:81 templates/base.html:98
 msgid "Register"
-msgstr "Zarejestruj się"
+msgstr ""
 
 #: templates/base.html:116
 msgid "Powered by"
-msgstr "Stworzone przez"
+msgstr ""
 
 #: templates/dashboard.html:13
 msgid "Find Locality in Ireland"
-msgstr "Znajdź miejscowość w Irlandii"
+msgstr ""
 
 #: templates/dashboard.html:28
 msgid "City, Town or Area"
-msgstr "Miasto lub miejscowość"
+msgstr ""
 
 #: templates/dashboard.html:30
 msgid "Locality"
-msgstr "Miejscowość"
+msgstr ""
 
 #: templates/dashboard.html:35 templates/dashboard.html:36
 #: templates/dashboard.html:41 templates/dashboard.html:42
 msgid "Address Line"
-msgstr "Linia Adresu"
+msgstr ""
 
 #: templates/dashboard.html:46
 msgid "Locate"
-msgstr "Znajdź"
+msgstr ""
 

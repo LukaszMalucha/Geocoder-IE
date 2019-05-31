@@ -18,25 +18,25 @@
             <fieldset class="form-box">
                 <div class="row text-center row-warning">
                     {% if warning %}
-                    <h6 class="warning">{{ warning }} asd</h6>
+                    <h6 class="warning">{{ warning }} </h6>
                     {% else %}
-                    <h6>Choose County in Ireland</h6>
+                    <h6>{{ _('Choose County in Ireland') }}</h6>
                     {% endif %}
                 </div>
                 <br>
                 <div class="row plain-element">
                     <div class="input-field col s12">
                         <select id="county" name="county">
-                            <option value=" " selected>County</option>
+                            <option value=" " selected>{{ _('County') }}</option>
                             {% for county in counties %}
                             <option value={{ county }}>{{ county }}</option>
                             {% endfor %}
                         </select>
-                        <label>Select County</label>
+                        <label>{{ _('Select County') }}</label>
                     </div>
                 </div>
             </fieldset>
-            <button class="btn-submit" type="submit" name="action" id="button_geocode"><span>Continue <i
+            <button class="btn-submit" type="submit" name="action" id="button_geocode"><span>{{ _('Continue') }} <i
                     class="fas fa-map-marker-alt"></i></span>
             </button>
         </form>
@@ -49,11 +49,11 @@
                 <table class="table table-striped table-bordered" id="dataTables-example">
                     <thead>
                     <tr>
-                        <th class="center">County</th>
-                        <th class="center">Address</th>
-                        <th class="center">Longitude</th>
-                        <th class="center">Latitude</th>
-                        <th class="center">Map</th>
+                        <th class="center">{{ _('County') }}</th>
+                        <th class="center">{{ _('Address') }}</th>
+                        <th class="center">{{ _('Longitude') }}</th>
+                        <th class="center">{{ _('Latitude') }}</th>
+                        <th class="center">{{ _('Map') }}</th>
 
                     </tr>
                     </thead>
@@ -71,7 +71,7 @@
                                 class="fas fa-map-marker-alt table_pin"></i></a></td>
                     </tr>
 
-                    {% endfor%}
+                    {% endfor %}
 
                     </tbody>
                 </table>

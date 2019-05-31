@@ -52,10 +52,14 @@ def get_local():
 ## Main View
 @app.route('/', methods=['GET', 'POST'])
 def dashboard():
-    ## Counties for the form
+    # Counties for the form
+    county_str = gettext('county')
+    location_str = gettext('Location')
     counties = county_list
     g = geocoder.ip('me')
-    geo = {'X': g.latlng[1], 'Y': g.latlng[0], 'Locality': 'Your Location'}
+
+
+    geo = {'X': g.latlng[1], 'Y': g.latlng[0], 'Locality': location_str }
 
     if request.method == 'POST':
         county = request.form['county']
@@ -66,10 +70,10 @@ def dashboard():
         ## Find desired locality
 
         geo = mongo.db.geocodes.find_one({"$and": [{"county": county}, {"townland": locality}]})
-        geo = {'X': geo['X'], 'Y': geo['Y'], 'Locality': f"{geo['townland']}, co. {geo['county']}"}
+        geo = {'X': geo['X'], 'Y': geo['Y'], 'Locality': f"{geo['townland']}, {county_str} {geo['county']}"}
 
         if not geo:
-            warning = "Geocode not found"
+            warning = gettext("Geocode not found")
             return render_template("dashboard.html", counties=counties, warning=warning, geo=geo)
 
     return render_template("dashboard.html", counties=counties, geo=geo)
@@ -113,7 +117,7 @@ if __name__ == '__main__':
         def create_tables():
             db.create_all()
 
-    app.run()
+    app.run(debug=True)
 
 ## Heroku
     # port = int(os.environ.get('PORT', 5000))

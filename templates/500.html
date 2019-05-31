@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>404 Error - Page Not Found</title>
+    <title>{{ _('500 Error - Internal Server Error') }}</title>
     <style type="text/css">
     body { font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; color:#333333; text-align:center; font-size:90%; margin:0; padding:0; }
     #mainContainer { margin:0 auto 20px auto; width:940px; padding:0; text-align:left; }
@@ -30,19 +30,19 @@
     <div class="robot"><img src="https://s3-eu-west-1.amazonaws.com/flask-static-files/static/img/robot500.png" width="300" height="380"
                             alt="Robot 404"/></div>
 
-    <div class="header"><span class="largeFont">Oops!</span> Internal Server Error</div>
+    <div class="header"><span class="largeFont">{{ _('Oops!') }}</span> {{ _('Internal Server Error') }}</div>
     <br clear="right"/>
 
     <div class="mainContent">
-        <p>HTTP 500 Error - The server encountered something unexpected <br> that didn't allow it to complete the request. We apologize</p>
+        <p>{{ _('HTTP 500 Error - The server encountered something unexpected') }}<br> {{ _('that didn't allow it to complete the request. We apologize') }}</p>
 
-        <p><strong>You can try:</strong></p>
+        <p><strong>{{ _('You can try') }}:</strong></p>
         <ul>
-            <li>Visit the <a href="{{ url_for('dashboard') }}">Homepage</a>
+            <li>{{ _('Visit the') }} <a href="{{ url_for('dashboard') }}">{{ _('Homepage') }}</a>
             </li>
-            <li>Go to <a href="javascript:history.go(-1);">previous</a> page
+            <li>{{ _('Go to') }} <a href="javascript:history.go(-1);">{{ _('previous') }}</a> {{ _('page') }}
             </li>
-            <li>Or come back later</li>
+            <li>{{ _('Or come back later') }}</li>
         </ul>
     </div>
 </div>

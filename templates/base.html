@@ -63,7 +63,7 @@
             <li><a class="nav-link" target="_blank" href="https://github.com/LukaszMalucha/Help-Me-Geocoder/"><i
                     class="fab fa-github"></i> <b> GitHub</b></a></li>
             <li><a class='dropdown-trigger nav-link' href='#' data-target='dropdown1' id="user_dropdown"><i
-                    class="fas fa-caret-down"></i><b> {{ current_user.email }}</b></a></li>
+                    class="fas fa-caret-down"></i><b>{% if current_user.username %} {{ current_user.email }} {% else %} {{ _('Guest') }} {% endif %}</b></a></li>
             <li><a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons" id="trigger">menu</i></a>
             </li>
         </ul>
@@ -71,7 +71,8 @@
 
     <!-- DROPDOWN -->
     <ul id="dropdown1" class="dropdown-content">
-        {% if current_user.email != "Guest" %}
+        {% if current_user.username %}
+
         <li><a href="{{ url_for('userlogout') }}" id="dropdown_link"><i class="fas fa-sign-out-alt"></i> {{ _('Log Out') }}</a>
         </li>
         {% else %}
@@ -88,7 +89,7 @@
         <li><a href="{{ url_for('addresses') }}"><i class="fas fa-terminal"></i> {{ _('Addresses') }}</a></li>
         <li><a target="_blank" href="https://github.com/LukaszMalucha/Help-Me-Geocoder/"><i
                 class="fab fa-github"></i> GitHub</a></li>
-        {% if current_user.email != "Guest" %}
+        {% if current_user.username %}
         <li><a href="{{ url_for('userlogout') }}" id="dropdown_link"><i class="fas fa-sign-out-alt"></i> {{ _('Log Out') }}</a>
         </li>
         {% else %}
