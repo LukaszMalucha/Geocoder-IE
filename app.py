@@ -1,13 +1,12 @@
 ## App Utilities
 import os
 import env
-from babel import numbers, dates
-from flask_babel import Babel, format_date, gettext
+from flask_babel import Babel, gettext
 import geocoder
 from db import db
 from flask_pymongo import PyMongo
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_restful import Api
 from flask_bootstrap import Bootstrap
 
@@ -52,31 +51,39 @@ def get_local():
 ## Main View
 @app.route('/', methods=['GET', 'POST'])
 def dashboard():
+
     # Counties for the form
-    county_str = gettext('county')
     location_str = gettext('Location')
     counties = county_list
     g = geocoder.ip('me')
 
+    response = {'X': g.latlng[1], 'Y': g.latlng[0], 'Locality': location_str }
 
-    geo = {'X': g.latlng[1], 'Y': g.latlng[0], 'Locality': location_str }
+    return render_template("dashboard.html", counties=counties, response=response)
 
-    if request.method == 'POST':
-        county = request.form['county']
-        locality = request.form['locality']
-        locality = locality.capitalize()
-        locality = locality.strip()
 
-        ## Find desired locality
 
-        geo = mongo.db.geocodes.find_one({"$and": [{"county": county}, {"townland": locality}]})
-        geo = {'X': geo['X'], 'Y': geo['Y'], 'Locality': f"{geo['townland']}, {county_str} {geo['county']}"}
+@app.route('/find', methods=['GET', 'POST'])
+def find():
 
-        if not geo:
-            warning = gettext("Geocode not found")
-            return render_template("dashboard.html", counties=counties, warning=warning, geo=geo)
+    county_str = gettext('county')
 
-    return render_template("dashboard.html", counties=counties, geo=geo)
+    county = request.form['county']
+    locality = request.form['locality']
+    locality = locality.capitalize()
+    locality = locality.strip()
+
+    # Find desired locality
+    response = {}
+    geo = mongo.db.geocodes.find_one({"$and": [{"county": county}, {"townland": locality}]})
+    if geo:
+        response = {'X': geo['X'], 'Y': geo['Y'], 'Locality': f"{geo['townland']}, {county_str} {geo['county']}"}
+    else:
+        response['error'] = gettext("Geocode not found")
+
+
+
+    return jsonify(response)
 
 
 @app.route('/addresses', methods=['GET', 'POST'])

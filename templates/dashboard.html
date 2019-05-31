@@ -4,14 +4,11 @@
 {% block content %}
 <div class="blue-box"></div>
 <div class="card form-card">
-    <form method="POST" enctype="multipart/form-data" class="col s12">
+    <form id="geocodeForm" method="POST" enctype="multipart/form-data" class="col s12">
         <fieldset class="form-box">
             <div class="row text-center" style="min-height: 20px">
-                {% if warning %}
-                <h6 class="warning">{{ warning }}</h6>
-                {% else %}
-                <h6>{{ _('Find Locality in Ireland') }}</h6>
-                {% endif %}
+                <h6 id="formHeader">{{ _('Find Locality in Ireland') }}</h6>
+                <h6 id="formError"></h6>
             </div>
             <div class="row plain-element">
                 <div class="input-field col s12">
@@ -54,19 +51,9 @@
 
 
 <script>
-    var mymap = L.map('mapid').setView([53.41, -7.92], 7);
 
 
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoibWF4aW11c21pbmltdXMiLCJhIjoiY2puOHlwZ2dwMGMzNDNrb2Rsc3dndTB3NyJ9.F6YVg9QT6hfgNGvy0aUypA'
-    }).addTo(mymap);
 
-    var marker = L.marker([{{geo.Y}},{{geo.X}}]).addTo(mymap);
-    marker.bindPopup("<br><b>Long: {{geo.X}}</b><br><b>&nbsp;&nbsp;&nbsp;Lat:&nbsp;&nbsp;{{geo.Y}}</b>").openPopup();
-    marker.bindPopup("<b>{{geo.Locality}}</b><br><b>{{ _('Longitude') }}: </b>&nbsp;&nbsp;{{geo.X}}<br><b>{{ _('Latitude') }}:</b>&nbsp;{{geo.Y}}").openPopup();
 </script>
 
 

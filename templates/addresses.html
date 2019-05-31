@@ -2,12 +2,6 @@
 
 {% block extrahead %}
 
-<script>
-    $(document).ready(function() {
-        $('#dataTables-example').dataTable();
-    });
-
-</script>
 {% endblock %}
 
 
@@ -46,7 +40,7 @@
 
         <div class="card table-card">
             <div class="table-responsive" style="overflow-x: hidden;">
-                <table class="table table-striped table-bordered" id="dataTables-example">
+                <table class="table table-striped table-bordered" id="dataTable">
                     <thead>
                     <tr>
                         <th class="center">{{ _('County') }}</th>
@@ -78,7 +72,7 @@
             </div>
 
         </div>
-        <br>
+
     </div>
 </div>
 

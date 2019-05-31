@@ -95,7 +95,7 @@ h2 {
     padding: 0px;
 }
 
-.warning {
+#formError {
     color: red;
 }
 
