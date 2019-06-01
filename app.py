@@ -1,6 +1,6 @@
 ## App Utilities
 import os
-import env
+# import env
 from flask_babel import Babel, gettext
 import geocoder
 from db import db
@@ -28,7 +28,7 @@ app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 
 mongo = PyMongo(app)
 babel = Babel(app)
-app.config['DEBUG'] = True
+app.config['DEBUG'] = False
 api = Api(app)
 
 Bootstrap(app)
@@ -42,10 +42,10 @@ api.add_resource(UserLogout, '/logout')
 api.add_resource(Address, '/api/address/<string:address>')
 api.add_resource(CountyAddressesList, '/api/county/<string:county>')
 
-## For Testing
-@babel.localeselector
-def get_local():
-    return 'pl'
+# ## For Testing
+# @babel.localeselector
+# def get_local():
+#     return 'pl'
 
 
 ## Main View
@@ -124,8 +124,8 @@ if __name__ == '__main__':
         def create_tables():
             db.create_all()
 
-    app.run(debug=True)
+    # app.run()
 
-## Heroku
-    # port = int(os.environ.get('PORT', 5000))
-    # app.run(host='0.0.0.0', port=port)
+# Heroku
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
