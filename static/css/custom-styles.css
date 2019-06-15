@@ -31,7 +31,7 @@ body {
     display: block;
     overflow: auto;
     position: relative;
-    top: 55px;
+    top: 42px;
 
 }
 
@@ -432,9 +432,9 @@ table.dataTable, table.dataTable thead th {
 
 .footer p {
     margin: 0;
-    font-size: 15px;
+    font-size: 13px;
     color: #fff;
-    padding: 15px 0px;
+    padding: 10px 0px;
     text-align: center;
 }
 

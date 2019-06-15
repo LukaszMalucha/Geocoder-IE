@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Geocoder IE</title>
+    <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='img/septellar.png')}}"/>
     <!-- Material Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Bootstrap-->
@@ -52,8 +53,9 @@
     <!-- TOP NAVBAR -->
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
-            <a class="navbar-brand waves-effect waves-dark" href="{{ url_for('dashboard') }}"><i
-                    class="fas fa-map-marker-alt"></i><strong> {{ _('Geocoder') }} IE</strong></a>
+            <a class="navbar-brand company-logo" href="{{url_for('dashboard')}}"><img class="company-logo"
+                                                                                                src="/static/img/logo-white.png"
+                                                                                                alt="Logo"/></a>
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li><a class="nav-link" href="{{ url_for('api') }}"><i class="fas fa-terminal"></i><b> REST API</b></a>
