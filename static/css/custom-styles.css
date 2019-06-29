@@ -452,7 +452,7 @@ table.dataTable, table.dataTable thead th {
 
 }
 
-@media(max-width:1600px) {
+@media(max-width:1700px) {
 
 
     #page-index {
@@ -474,7 +474,7 @@ table.dataTable, table.dataTable thead th {
 
 
     .table-card {
-        padding: 0px;
+        padding: 20px;
     }
 
 
@@ -485,17 +485,8 @@ table.dataTable, table.dataTable thead th {
 
 /* MAX WIDTHS: MEDIUM SCREEN---------------------------------------------------*/
 
-@media(max-width:1200px) {
 
-
-
-}
-
-@media(max-width:1056px) {
-
-}
-
-@media(max-width:993px) {
+@media(max-width:1025px) {
 
     .county-card {
        position: relative;
