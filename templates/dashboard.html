@@ -14,7 +14,7 @@
                 <div class="input-field col s12">
                     <select id="county" name="county">
                         {% for county in counties %}
-                        <option value={{ county }}>{{ county }}</option>
+                        <option value="{{ county }}">{{ county }}</option>
                         {% endfor %}
                     </select>
                     <label>{{ _('Select County') }} </label>
