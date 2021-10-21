@@ -1,5 +1,5 @@
 aniso8601==6.0.0
-Babel==2.7.0
+Babel==2.9.1
 certifi==2019.3.9
 chardet==3.0.4
 Click==7.0
